@@ -17,6 +17,7 @@ microservice, here.
 Explain your models and integration with the inventory
 microservice, here.
 
-[Excalidraw Diagram]: (https://imgur.com/ed41vTt)
+#Diagram
+![Excalidraw Diagram](https://i.imgur.com/ed41vTt.jpg)
 
 
