@@ -36,11 +36,6 @@ The Service microservice ensures that every aspect of the automobile servicing i
 
 Explain your models and integration with the inventory
 microservice, here.
-<<<<<<< HEAD
 
 #Diagram
 ![Excalidraw Diagram](https://i.imgur.com/ed41vTt.jpg)
-
-
-=======
->>>>>>> services_branch
