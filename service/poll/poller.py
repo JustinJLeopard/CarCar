@@ -14,13 +14,11 @@ django.setup()
 
 from service_rest.models import AutomobileVO
 
-API_INVENTORY = "http://project-beta-inventory-api-1:8000/api/automobiles/"
-
 def poll():
     while True:
         print('Service poller polling for data')
         try:
-            response = response.get("http://project-beta-inventory-api-1:8000/api/automobiles/")
+            response = requests.get("http://project-beta-inventory-api-1:8000/api/automobiles/")
             
             content = json.loads(response.content)
             for auto in content["autos"]:
@@ -32,7 +30,7 @@ def poll():
         except Exception as e:
             print(e, file=sys.stderr)
 
-        time.sleep(6)
+        time.sleep(60)
 
 
 if __name__ == "__main__":
