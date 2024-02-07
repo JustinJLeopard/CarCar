@@ -20,7 +20,8 @@ def poll():
     while True:
         print('Service poller polling for data')
         try:
-            response = response.get(API_INVENTORY)
+            response = response.get("http://project-beta-inventory-api-1:8000/api/automobiles/")
+            
             content = json.loads(response.content)
             for auto in content["autos"]:
                 AutomobileVO.objects.update_or_create(vin=auto["vin"])
@@ -31,7 +32,7 @@ def poll():
         except Exception as e:
             print(e, file=sys.stderr)
 
-        time.sleep(60)
+        time.sleep(6)
 
 
 if __name__ == "__main__":
