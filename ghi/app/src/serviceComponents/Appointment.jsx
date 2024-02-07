@@ -1,14 +1,34 @@
 import { useState } from "react";
 
-// function Appointment() {
-//   const [appointmentStatus, setAppointmentStatus] = useState;
+function Appointment({
+  appointment,
+  handleAppointmentChange,
+  deleteAppointment,
+}) {
+  const [status, setStatus] = useState(appointment.status);
 
-// async function getAppointments() {
-//   const response = await fetch(`http://localhost:8080/api/appointments/`);
-//   if (response.ok) {
-//     const data = await response.json();
-//   }
-// }
-
-const response = await fetch("http://localhost:8080/api/appointments/");
-console.log(response);
+  async function handleChange(id) {
+    const response = await fetch(
+      `http://localhost:8080/api/appointments/${id}/cancel`,
+      { method: "put" }
+    );
+    if (!response.ok) {
+      console.error("Unable to update status of Cancelled");
+    } else {
+      setStatus(["canceled"]);
+      deleteAppointment(id);
+    }
+  }
+  async function handleAppointment(id) {
+    const response = await fetch(
+      `http://localhost:8080/api/appointments/${id}/finish`,
+      { method: "put" }
+    );
+    if (!response.ok) {
+      console.error("error updating status to finished");
+    } else {
+      setStatus(["finished"]);
+      deleteAppointment(id);
+    }
+  }
+}
