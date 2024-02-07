@@ -14,7 +14,7 @@ django.setup()
 
 from service_rest.models import AutomobileVO
 
-API_INVENTORY = "http//project-beta-inventory-api-1:8000/api/automobiles/"
+API_INVENTORY = "http://project-beta-inventory-api-1:8000/api/automobiles/"
 
 def poll():
     while True:

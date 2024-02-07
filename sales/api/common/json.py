@@ -2,6 +2,7 @@ from json import JSONEncoder
 from django.urls import NoReverseMatch
 from django.db.models import QuerySet
 from datetime import datetime, date
+from decimal import Decimal
 
 
 class DateEncoder(JSONEncoder):
@@ -36,11 +37,16 @@ class ModelEncoder(DateEncoder, QuerySetEncoder, JSONEncoder):
                 if property in self.encoders:
                     encoder = self.encoders[property]
                     value = encoder.default(value)
+                elif isinstance(value, Decimal):
+                    value = str(value)
                 d[property] = value
             d.update(self.get_extra_data(o))
             return d
+        elif isinstance(o, Decimal):
+            return str(o)
         else:
             return super().default(o)
 
     def get_extra_data(self, o):
         return {}
+
