@@ -25,6 +25,8 @@ The project leverages powerful technologies and libraries:
 
 ### How To Run Application :whale:
 
+![Docker](https://img.shields.io/badge/-Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+
 Follow these steps to get the application up and running on your local machine:
 
 - **Open your terminal.**
