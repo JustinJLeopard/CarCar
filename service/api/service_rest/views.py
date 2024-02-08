@@ -5,6 +5,14 @@ from common.json import ModelEncoder
 from .models import AutomobileVO, Appointment, Technician
 
 # Create your views here.
+
+
+# Added a Status Encoder to test:
+# class StatusEncoder(ModelEncoder):
+#     model = Status
+#     properties = ["name"]
+
+
 class AutomobileVODetailEncoder(ModelEncoder):
     model = AutomobileVO
     properties = ["vin",]
@@ -12,6 +20,7 @@ class AutomobileVODetailEncoder(ModelEncoder):
 class TechnicianListEncoder(ModelEncoder):
     model = Technician
     properties = [
+        "id",
         "first_name",
         "last_name",
         "employee_id",
@@ -20,6 +29,7 @@ class TechnicianListEncoder(ModelEncoder):
 class TechnicianDetailEncoder(ModelEncoder):
     model = Technician
     properties = [
+        "id",
         "first_name",
         "last_name",
         "employee_id",
@@ -63,14 +73,15 @@ def list_technicians(request):
         technicians = Technician.objects.all()
         return JsonResponse({"technicians":technicians},
         encoder=TechnicianDetailEncoder,
-        safe=False)
+        safe=False
+        )
     else:
         content = json.loads(request.body)
         try:
             technician = Technician.objects.create(**content)
             return JsonResponse(
                 technician,
-                encoder=TechnicianDetailEncoder,
+                encoder=TechnicianListEncoder,
                 safe=False,
             )
         except Technician.DoesNotExist:
@@ -81,6 +92,12 @@ def list_technicians(request):
 
 @require_http_methods(["GET","PUT","DELETE"])
 def show_technician_details(request, pk):
+    try:
+        Technician.objects.get(id=pk)
+    except Technician.DoesNotExist:
+        return HttpResponseNotFound(
+            "Invalid Technician ID",
+        )
     if request.method == "DELETE":
         try:
             count, _ = Technician.objects.filter(id=pk).delete()
@@ -103,11 +120,11 @@ def show_technician_details(request, pk):
 
     else:
         content = json.loads(request.body)
-        Technician.objects.filter(id=pk).update(**content)
-        technician = Technician.objects.get(id=pk)
+        Technician.objects.filter(employee_id=pk).update(**content)
+        technician = Technician.objects.get(employee_id=pk)
         return JsonResponse(
             technician, 
-            encoder=TechnicianEncoder, 
+            encoder=TechnicianDetailEncoder, 
             safe=False,
             )
 
@@ -171,7 +188,7 @@ def appointment_completed(request, pk):
             return HttpResponseNotFound("Appointment ID Could not be found")
         appointment = Appointment.objects.get(id=pk)
         appointment.finish()
-        print()
+        print(JsonResponse(appointment, encoder=AppointmentDetailEncoder, safe=False))
         return JsonResponse(
             appointment,
             encoder=AppointmentDetailEncoder,
