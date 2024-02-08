@@ -1,68 +1,74 @@
 import { useState } from "react";
 
 function CreateTechnicianForm() {
-  const [formData, setFormData] = useState({
-    first_name: "",
-    last_name: "",
-    employee_id: "",
-  });
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [employeeId, setEmployeeId] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const data = {};
+    data.first_name = firstName;
+    data.last_name = lastName;
+    data.employee_id = employeeId;
 
-    const url = "http://localhost:8080/api/technicians/";
-    const getFormData = {
-      method: "POST",
-      body: JSON.stringify(formData),
+    const technicianUrl = "http://localhost:8080/api/technicians/";
+
+    const fetchConfig = {
+      method: "post",
+      body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
       },
     };
-    try {
-      const response = await fetch(url, getFormData);
 
-      if (response.ok) {
-        const newTechnician = await response.json();
-        console.log(newTechnician);
-
-        const cleared = {
-          first_name: "",
-          last_name: "",
-          employee_id: "",
-        };
-        setFormData(cleared);
-      } else {
-        console.error("Failed to create appointment:", response.statusText);
-      }
-    } catch (error) {
-      console.error("An error occured while creating the hat", error);
+    const technician = await fetch(technicianUrl, fetchConfig);
+    if (technician.ok) {
+      const newTechnician = await technician.json();
+      console.log(newTechnician);
+      setFirstName("");
+      setLastName("");
+      setEmployeeId("");
     }
   };
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    console.log(name);
-    setFormData({ ...formData, [name]: value });
+
+  const handleFirstNameChange = (event) => {
+    const value = event.target.value;
+    setFirstName(value);
   };
+  const handleLastNameChange = (event) => {
+    const value = event.target.value;
+    setLastName(value);
+  };
+  const handleEmployeeIdChange = (event) => {
+    const value = event.target.value;
+    setEmployeeId(value);
+  };
+
   return (
     <div className="container mt-5">
       <div className="row justify-content-center">
         <div className="col-md-8">
           <div
             className="card shadow-lg p-3 mb-5 bg-body rounded"
-            style={{ border: "1px solid #0D9276" }}
+            style={{ border: "1px solid #539165" }}
           >
             <div className="card-body">
               <h1
                 className="card-title text-center"
-                style={{ color: "#0D9276" }}
+                style={{ color: "#539165" }}
               >
                 Add A Technician
               </h1>
-              <form onSubmit={handleInputChange} id="add-technician">
+              <form
+                onSubmit={handleSubmit}
+                id="add-technician"
+                className="mt-4"
+              >
                 <div className="form-floating mb-3">
                   <input
-                    onChange={handleInputChange}
-                    value={formData.first_name}
+                    onChange={handleFirstNameChange}
+                    value={firstName}
                     placeholder="First name"
                     required
                     type="text"
@@ -74,8 +80,8 @@ function CreateTechnicianForm() {
                 </div>
                 <div className="form-floating mb-3">
                   <input
-                    onChange={handleInputChange}
-                    value={formData.last_name}
+                    onChange={handleLastNameChange}
+                    value={lastName}
                     placeholder="Last name"
                     required
                     type="text"
@@ -87,8 +93,8 @@ function CreateTechnicianForm() {
                 </div>
                 <div className="form-floating mb-3">
                   <input
-                    onChange={handleInputChange}
-                    value={formData.employee_Id}
+                    onChange={handleEmployeeIdChange}
+                    value={employeeId}
                     placeholder="Employee ID"
                     type="number"
                     min="1"
@@ -98,12 +104,20 @@ function CreateTechnicianForm() {
                   />
                   <label htmlFor="employee_id">Employee ID</label>
                 </div>
-                <button
-                  className="btn"
-                  style={{ backgroundColor: "#0D9276", color: "white" }}
-                >
-                  Add Technician
-                </button>
+                <div className="d-flex justify-content-center mt-4">
+                  <button
+                    type="submit"
+                    className="btn btn-primary btn-lg"
+                    style={{
+                      backgroundColor: "#539165",
+                      color: "white",
+                      padding: "10px 20px",
+                      fontSize: "1.25rem",
+                    }}
+                  >
+                    Create A New Technician
+                  </button>
+                </div>
               </form>
             </div>
           </div>
