@@ -6,7 +6,6 @@ function CreateAutomobileForm() {
   const [vin, setVin] = useState("");
   const [sold, setSold] = useState(false);
   const [model, setModel] = useState("");
-  // Create a dropdown for selection with an Array of the models with a separate state:
   const [models, setModels] = useState([]);
 
   useEffect(() => {

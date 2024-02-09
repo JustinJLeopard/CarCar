@@ -14,7 +14,6 @@ const AutomobileList = () => {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        console.log("Data fetched:", data);
         setAutomobiles(data.autos);
       } catch (error) {
         setError(error.message);
@@ -26,9 +25,7 @@ const AutomobileList = () => {
     getAutomobiles();
   }, []);
 
-  useEffect(() => {
-    console.log("Automobiles state updated:", automobiles);
-  }, [automobiles]);
+  useEffect(() => {}, [automobiles]);
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
@@ -53,8 +50,8 @@ const AutomobileList = () => {
               <td>{auto.vin}</td>
               <td>{auto.color}</td>
               <td>{auto.year}</td>
-              <td>{auto.model?.name}</td>{" "}
-              <td>{auto.model?.manufacturer?.name}</td>
+              <td>{auto.model.name}</td>
+              <td>{auto.model.manufacturer?.name}</td>
               <td>
                 <input type="checkbox" checked={auto.sold} readOnly />
               </td>

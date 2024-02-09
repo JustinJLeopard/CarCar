@@ -1,45 +1,43 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const SalespersonHistory = () => {
   const [salespeople, setSalespeople] = useState([]);
-  const [selectedSalesperson, setSelectedSalesperson] = useState('');
+  const [selectedSalesperson, setSelectedSalesperson] = useState("");
   const [salesHistory, setSalesHistory] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
-  // Fetch salespeople
   useEffect(() => {
-    fetch('http://localhost:8090/api/salespeople/')
-      .then(response => response.json())
-      .then(data => {
-        if (data.length !== undefined) { // Check if data is an array
+    fetch("http://localhost:8090/api/salespeople/")
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.length !== undefined) {
           setSalespeople(data);
         } else {
-          console.error('Unexpected data format for salespeople:', data);
+          console.error("Unexpected data format for salespeople:", data);
         }
       })
-      .catch(error => {
-        console.error('Error fetching salespeople:', error);
-        setError('Failed to fetch salespeople');
+      .catch((error) => {
+        console.error("Error fetching salespeople:", error);
+        setError("Failed to fetch salespeople");
       });
   }, []);
 
-
   useEffect(() => {
-    fetch('http://localhost:8090/api/sales/')
-      .then(response => response.json())
-      .then(data => {
+    fetch("http://localhost:8090/api/sales/")
+      .then((response) => response.json())
+      .then((data) => {
         if (Array.isArray(data.sales)) {
-          const filteredSales = data.sales.filter(sale => sale.salesperson.employee_id === selectedSalesperson);
+          const filteredSales = data.sales.filter(
+            (sale) => sale.salesperson.employee_id === selectedSalesperson
+          );
           setSalesHistory(filteredSales);
         } else {
-          console.error('Unexpected data format:', data);
           setSalesHistory([]);
         }
       })
-      .catch(error => console.error('Error fetching sales data:', error));
+      .catch((error) => console.error("Error fetching sales data:", error));
   }, [selectedSalesperson]);
-
 
   const handleSalespersonChange = (event) => {
     setSelectedSalesperson(event.target.value);
@@ -50,13 +48,17 @@ const SalespersonHistory = () => {
       <h2>Salesperson History</h2>
       <select value={selectedSalesperson} onChange={handleSalespersonChange}>
         <option value="">Select a Salesperson</option>
-        {salespeople.map(sp => (
+        {salespeople.map((sp) => (
           <option key={sp.employee_id} value={sp.employee_id}>
             {`${sp.first_name} ${sp.last_name}`}
           </option>
         ))}
       </select>
-      {isLoading ? <p>Loading sales history...</p> : error ? <p>Error: {error}</p> : (
+      {isLoading ? (
+        <p>Loading sales history...</p>
+      ) : error ? (
+        <p>Error: {error}</p>
+      ) : (
         <table>
           <thead>
             <tr>
@@ -67,7 +69,7 @@ const SalespersonHistory = () => {
             </tr>
           </thead>
           <tbody>
-            {salesHistory.map(sale => (
+            {salesHistory.map((sale) => (
               <tr key={sale.id}>
                 <td>{`${sale.customer.first_name} ${sale.customer.last_name}`}</td>
                 <td>{sale.automobile.vin}</td>
@@ -83,4 +85,3 @@ const SalespersonHistory = () => {
 };
 
 export default SalespersonHistory;
-

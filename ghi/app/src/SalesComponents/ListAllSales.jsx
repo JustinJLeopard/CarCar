@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const ListAllSales = () => {
   const [sales, setSales] = useState([]);
@@ -6,21 +6,20 @@ const ListAllSales = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:8090/api/sales/')
-      .then(response => {
+    fetch("http://localhost:8090/api/sales/")
+      .then((response) => {
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         return response.json();
       })
-      .then(data => {
-        console.log("Fetched sales data:", data);
+      .then((data) => {
         setSales(data.sales || []);
         setIsLoading(false);
       })
 
-      .catch(error => {
-        console.error('There was a problem with the fetch operation:', error);
+      .catch((error) => {
+        console.error("There was a problem with the fetch operation:", error);
         setError(error.message);
         setIsLoading(false);
       });
@@ -44,8 +43,12 @@ const ListAllSales = () => {
         <tbody>
           {sales.map((sale, index) => (
             <tr key={index}>
-              <td>{sale.salesperson.first_name} {sale.salesperson.last_name}</td>
-              <td>{sale.customer.first_name} {sale.customer.last_name}</td>
+              <td>
+                {sale.salesperson.first_name} {sale.salesperson.last_name}
+              </td>
+              <td>
+                {sale.customer.first_name} {sale.customer.last_name}
+              </td>
               <td>{sale.automobile.vin}</td>
               <td>${sale.price}</td>
               <td>{new Date(sale.date_of_sale).toLocaleString()}</td>

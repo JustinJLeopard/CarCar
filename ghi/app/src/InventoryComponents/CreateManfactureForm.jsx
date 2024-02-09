@@ -10,13 +10,6 @@ import mercedes from "../images/Mercedes.png";
 import porsche from "../images/porsche.png";
 import styles from "../css/bootstrap.css";
 
-// import reactLogo from "./reactLogo.png";
-
-// export default function App() {
-
-//   return <img src={reactLogo} alt="react logo" />
-// }
-
 const CreateManufacturerForm = () => {
   const [name, setName] = useState("");
   const [error, setError] = useState("");
@@ -44,9 +37,9 @@ const CreateManufacturerForm = () => {
       const data = await manufacturersData.json();
       if (manufacturersData.ok) {
         console.log("New Manufacturer Created:", manufacturersData);
-        setName(""); // Clear the form
-        setSuccess("Manufacturer added successfully!"); // Set success message
-        setError(""); // Clear any previous errors
+        setName("");
+        setSuccess("Manufacturer added successfully!");
+        setError("");
       } else {
         const errorData = await manufacturersData.json();
         console.error(error);
@@ -69,7 +62,6 @@ const CreateManufacturerForm = () => {
         <div className="col-md-6">
           <div className="card shadow">
             <div className="card-body text-center">
-              {/* Bootstrap Carousel */}
               <div
                 id="manufacturerCarousel"
                 className="carousel slide"
@@ -88,10 +80,9 @@ const CreateManufacturerForm = () => {
                     porsche,
                   ].map((image, index) => (
                     <div
-                      key={image}
+                      key={index}
                       className={`carousel-item ${index === 0 ? "active" : ""}`}
                     >
-                      {/* Color Overlay */}
                       <div
                         className="carousel-image-container"
                         style={{
@@ -147,8 +138,8 @@ const CreateManufacturerForm = () => {
                     placeholder="Name"
                     required
                     type="text"
-                    name="name"
-                    id="name"
+                    // name="name"
+                    // id="name"
                     className="form-control"
                   />
                   <label htmlFor="name">Name</label>
