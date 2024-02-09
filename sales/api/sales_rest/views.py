@@ -2,7 +2,7 @@ from django.http import JsonResponse, HttpResponse
 from django.views.decorators.http import require_http_methods
 from django.core.exceptions import ValidationError
 from django.shortcuts import get_object_or_404
-
+from django.utils import timezone
 from .models import AutomobileVO, Salesperson, Customer, Sale
 from common.json import ModelEncoder
 import json
@@ -22,7 +22,7 @@ class CustomerEncoder(ModelEncoder):
 
 class SaleEncoder(ModelEncoder):
     model = Sale
-    properties = ["id", "price", "automobile", "salesperson", "customer"]
+    properties = ["id", "price", "automobile", "salesperson", "customer", "date_of_sale"]
     encoders = {
         'automobile': AutomobileVOEncoder(),
         'salesperson': SalespersonEncoder(),
@@ -86,7 +86,8 @@ def api_sales(request):
                 automobile=automobile,
                 salesperson=salesperson,
                 customer=customer,
-                price=price
+                price=price,
+                date_of_sale = timezone.now()
             )
             return JsonResponse(sale, encoder=SaleEncoder, safe=False)
         except AutomobileVO.DoesNotExist:

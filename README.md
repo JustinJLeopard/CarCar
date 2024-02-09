@@ -53,17 +53,33 @@ Follow these steps to get the application up and running on your local machine:
 ## Models:
 
 - AutomobileVo Model: This model fetches automobile data from the Inventory API and includes information about VIN.
-- Technician Model: It represents technicians and includes their name and employee_number information.
+- Technician Model: It represents technicians and includes their name and employee number information.
 - Appointment Model: This model represents service appointments and includes details such as customer, VIN, technician, date/time, VIP status, reason, and appointment status (finished or not).
 
 The Service microservice ensures that every aspect of the automobile servicing is managed with precision and care. It allows technicians to manage services ranging from appointment scheduling, track maintenance of automobile inventory within our fleet, and keep customer service at the forefront of our organization.
 
 ## Sales microservice
 
-Explain your models and integration with the inventory
-microservice, here.
+## Capabilities:
 
-#Domain Driven Design Overlay
+- View Salespeople: You can view a list of salespeople
+- View Salespeople Sales History: You can select a salesperson from a dropdown box and see a list of sales that salesperson has made, the customer, automobile, price, and date.
+- Add a salesperson: You can add a new salesperson with first name, last name, and employee ID.
+- View a list of all sales: You can view a comprehensive list of all sales that have been made between all salespeople, viewing the salesperson, customer, automobile, and price.
+- Record a new sale: You can easily record a new sale inputting the automobile VIN, salesperson, customer, and price.
+- View list of all customers: You can view a comprehensive list of all customers added to the database including their first name, last name, phone number, and address.
+- Add a customer: You can add a customer to the database with first name, last name, address, and phone number.
+
+## Models:
+
+- AutomobileVO Model: This model fetches automobile data from the Inventory API and includes information about VIN.
+- Salesperson Model: Represents salespeople and includes their name and employee number.
+- Customer Model: Represents customers and includes their name, address, and phone number.
+-Sale Model: This models represents sales and includes the price of the sale, the date/time the sale took place, the automobile in question, the salesperson for the sale, and the customer making the purchase.
+
+The Sales microservice ensures that every aspect of sales management is managed with precision and care. It allows salespeople to manage sales ranging from customer management, tracking of sales of automobile inventory within our fleet, and keep customer service at the forefront of our organization.
+
+## Domain Driven Design Overlay
 CarCar is made up of 3 microservices which interact with one another.
 
 - **Inventory**
@@ -310,7 +326,7 @@ Getting a list of Automobile Return Value:
 
 # Sales Microservice
 
-On the backend, the sales microservice has 4 models: AutomobileVO, Customer, SalesPerson, and SalesRecord. SalesRecord is the model that interacts with the other three models. This model gets data from the three other models.
+On the backend, the sales microservice has 4 models: AutomobileVO, Customer, Salesperson, and Sale. Sale is the model that interacts with the other three models. This model gets data from the three other models.
 
 The AutomobileVO is a value object that gets data about the automobiles in the inventory using a poller. The sales poller automotically polls the inventory microservice for data, so the sales microservice is constantly getting the updated data.
 

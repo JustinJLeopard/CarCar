@@ -48,6 +48,7 @@ const ListAllSales = () => {
               <td>{sale.customer.first_name} {sale.customer.last_name}</td>
               <td>{sale.automobile.vin}</td>
               <td>${sale.price}</td>
+              <td>{new Date(sale.date_of_sale).toLocaleString()}</td>
             </tr>
           ))}
         </tbody>

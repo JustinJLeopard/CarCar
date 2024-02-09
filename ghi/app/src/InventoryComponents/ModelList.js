@@ -27,15 +27,41 @@ const ModelList = () => {
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
+  // Add your styling here
+  const gridStyle = {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+    gap: '20px',
+    padding: '20px'
+  };
+
+  const cardStyle = {
+    border: '1px solid #ddd',
+    boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+    borderRadius: '8px',
+    overflow: 'hidden',
+    transition: 'transform 0.2s ease-in-out',
+  };
+
+  const cardHoverStyle = {
+    ...cardStyle,
+    transform: 'scale(1.03)',
+    boxShadow: '0 6px 12px rgba(0,0,0,0.15)',
+  };
+
   return (
     <div>
-      <h2>Models</h2>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '20px' }}>
+      <h2 style={{ textAlign: 'center', margin: '20px 0' }}>Models</h2>
+      <div style={gridStyle}>
         {vehicleModels.map(model => (
-          <div key={model.id} style={{ border: '1px solid #ccc', padding: '20px', borderRadius: '5px' }}>
-            <h3>{model.name}</h3>
-            <p>{model.manufacturer.name}</p>
-            <img src={model.picture_url} alt={model.name} style={{ maxWidth: '100%', height: 'auto' }} />
+          <div key={model.id} style={cardStyle}
+               onMouseEnter={e => e.currentTarget.style = cardHoverStyle}
+               onMouseLeave={e => e.currentTarget.style = cardStyle}>
+            <div style={{ padding: '15px' }}>
+              <h3 style={{ margin: '0 0 10px 0', color: '#333' }}>{model.name}</h3>
+              <p style={{ margin: '0 0 15px 0', color: '#666' }}>{model.manufacturer.name}</p>
+            </div>
+            <img src={model.picture_url} alt={model.name} style={{ width: '100%', height: 'auto', display: 'block' }} />
           </div>
         ))}
       </div>
@@ -44,3 +70,4 @@ const ModelList = () => {
 };
 
 export default ModelList;
+

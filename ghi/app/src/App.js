@@ -12,12 +12,12 @@ import SalespersonHistory from "./SalesComponents/SalespersonHistory";
 import ModelList from "./InventoryComponents/ModelList";
 import CreateVehicleModelForm from "./InventoryComponents/CreateVehicleModelForm";
 import ManufacturersList from "./InventoryComponents/ManufacturersList";
-import TechnicianList from "./ServiceComponents/TechnicianLIst";
-import AppointmentList from "./ServiceComponents/AppointmentList";
-import CreateAppointmentForm from "./ServiceComponents/CreateAppointmentForm";
-import CreateTechnicianForm from "./ServiceComponents/CreateTechnicianForm";
+import TechnicianList from "./serviceComponents/TechnicianLIst";
+import AppointmentList from "./serviceComponents/AppointmentList";
+import CreateAppointmentForm from "./serviceComponents/CreateAppointmentForm";
+import CreateTechnicianForm from "./serviceComponents/CreateTechnicianForm";
 import AutomobileList from "./InventoryComponents/AutomobileList";
-import ServiceHistoryList from "./ServiceComponents/ServiceHistoryList";
+import ServiceHistoryList from "./serviceComponents/ServiceHistoryList";
 import CreateAutomobileForm from "./InventoryComponents/CreateAutomobileForm";
 
 function App() {

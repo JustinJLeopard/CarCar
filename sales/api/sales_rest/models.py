@@ -2,6 +2,8 @@ from django.db import models
 
 from django.urls import reverse
 
+import datetime
+
 
 class AutomobileVO(models.Model):
     vin = models.CharField(max_length = 17, unique = True)
@@ -23,6 +25,7 @@ class Customer(models.Model):
 
 class Sale(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
+    date_of_sale = models.DateTimeField(auto_now_add = True)
     automobile = models.ForeignKey(
         AutomobileVO,
         related_name="sales",

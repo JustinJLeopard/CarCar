@@ -46,6 +46,7 @@ const RecordNewSale = () => {
       salesperson: selectedSalespersonID,
       customer: selectedCustomerID,
       price: parseFloat(price).toFixed(2),
+      date_of_sale: new Date().toISOString(),
     };
 
     console.log('Submitting saleData:', JSON.stringify(saleData));
