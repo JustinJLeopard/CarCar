@@ -12,13 +12,11 @@ import SalespersonHistory from './SalesComponents/SalespersonHistory';
 import ModelList from './InventoryComponents/ModelList';
 import CreateVehicleModelForm from './InventoryComponents/CreateVehicleModelForm';
 import ManufacturersList from './InventoryComponents/ManufacturersList';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import MainPage from "./MainPage";
-import Nav from "./Nav";
 import TechnicianList from "./serviceComponents/TechnicianLIst";
 import AppointmentList from "./serviceComponents/AppointmentList";
 import CreateAppointmentForm from "./serviceComponents/CreateAppointmentForm";
 import CreateTechnicianForm from "./serviceComponents/CreateTechnicianForm";
+
 
 function App() {
   return (
