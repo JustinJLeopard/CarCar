@@ -19,6 +19,7 @@ import CreateTechnicianForm from "./serviceComponents/CreateTechnicianForm";
 import AutomobileList from "./InventoryComponents/AutomobileList";
 import ServiceHistoryList from "./serviceComponents/ServiceHistoryList";
 import CreateAutomobileForm from "./InventoryComponents/CreateAutomobileForm";
+import CreateManufacturerForm from "./InventoryComponents/CreateManfactureForm";
 
 function App() {
   return (
@@ -36,6 +37,10 @@ function App() {
           <Route path="/saleshistory" element={<SalespersonHistory />} />
           <Route path="/modelslist" element={<ModelList />} />
           <Route path="/createmodels" element={<CreateVehicleModelForm />} />
+          <Route
+            path="/manufacturer/create/"
+            element={<CreateManufacturerForm />}
+          />
           <Route path="/manufacturerslist" element={<ManufacturersList />} />
           <Route
             path="/automobiles/create/"
