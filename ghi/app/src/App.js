@@ -1,22 +1,24 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import MainPage from './MainPage';
-import Nav from './Nav';
-import React from 'react';
-import AddSalesperson from './SalesComponents/AddSalesperson';
-import ListSalespeople from './SalesComponents/ListSalespeople';
-import AddCustomer from './SalesComponents/AddCustomer';
-import ListCustomers from './SalesComponents/ListCustomers';
-import RecordNewSale from './SalesComponents/RecordNewSale';
-import ListAllSales from './SalesComponents/ListAllSales';
-import SalespersonHistory from './SalesComponents/SalespersonHistory';
-import ModelList from './InventoryComponents/ModelList';
-import CreateVehicleModelForm from './InventoryComponents/CreateVehicleModelForm';
-import ManufacturersList from './InventoryComponents/ManufacturersList';
-import TechnicianList from "./serviceComponents/TechnicianLIst";
-import AppointmentList from "./serviceComponents/AppointmentList";
-import CreateAppointmentForm from "./serviceComponents/CreateAppointmentForm";
-import CreateTechnicianForm from "./serviceComponents/CreateTechnicianForm";
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MainPage from "./MainPage";
+import Nav from "./Nav";
+import React from "react";
+import AddSalesperson from "./SalesComponents/AddSalesperson";
+import ListSalespeople from "./SalesComponents/ListSalespeople";
+import AddCustomer from "./SalesComponents/AddCustomer";
+import ListCustomers from "./SalesComponents/ListCustomers";
+import RecordNewSale from "./SalesComponents/RecordNewSale";
+import ListAllSales from "./SalesComponents/ListAllSales";
+import SalespersonHistory from "./SalesComponents/SalespersonHistory";
+import ModelList from "./InventoryComponents/ModelList";
+import CreateVehicleModelForm from "./InventoryComponents/CreateVehicleModelForm";
+import ManufacturersList from "./InventoryComponents/ManufacturersList";
+import TechnicianList from "./ServiceComponents/TechnicianLIst";
+import AppointmentList from "./ServiceComponents/AppointmentList";
+import CreateAppointmentForm from "./ServiceComponents/CreateAppointmentForm";
+import CreateTechnicianForm from "./ServiceComponents/CreateTechnicianForm";
+import AutomobileList from "./InventoryComponents/AutomobileList";
+import ServiceHistoryList from "./ServiceComponents/ServiceHistoryList";
+import CreateAutomobileForm from "./InventoryComponents/CreateAutomobileForm";
 
 function App() {
   return (
@@ -35,7 +37,13 @@ function App() {
           <Route path="/modelslist" element={<ModelList />} />
           <Route path="/createmodels" element={<CreateVehicleModelForm />} />
           <Route path="/manufacturerslist" element={<ManufacturersList />} />
+          <Route
+            path="/automobiles/create/"
+            element={<CreateAutomobileForm />}
+          />
+          <Route path="automobiles/list/" element={<AutomobileList />} />
           <Route path="technicians/" element={<TechnicianList />} />
+          <Route path="servicehistory/" element={<ServiceHistoryList />} />
           <Route path="appointments/" element={<AppointmentList />} />
           <Route
             path="appointments/create/"
