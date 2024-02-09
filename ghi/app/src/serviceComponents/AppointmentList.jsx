@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function AppointmentList() {
   const [appointments, setAppointments] = useState([]);
   const [error, setError] = useState(null);
+  const apptFormNavigate = useNavigate();
 
   useEffect(() => {
     const getData = async () => {
@@ -23,6 +24,7 @@ function AppointmentList() {
     getData();
   }, []);
 
+  // Handle the cancellation of the appointment
   const handleDeleteAppointment = async (id) => {
     try {
       const response = await fetch(
@@ -44,16 +46,33 @@ function AppointmentList() {
     }
   };
 
+  //Test with partners implementation as well
+  // Using React Router DOM --> {useNavigate} {documentationLink:https://reactrouter.com/en/main/hooks/use-navigate}
+  // Handle the button click for creating a new appointment for customer
+
+  function handleButtonClick() {
+    apptFormNavigate("/appointments/create/");
+  }
+
+  // Using JavaScript built in fuction to formate the Date Output to the client UI for the appointment List
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
   };
+
   return (
     <div>
-      <h1>Appointment List Test</h1>
-      <Link to="/service/appointment/new" className="btn btn-primary">
-        Book New Appointment
-      </Link>
+      <div className="d-flex justify-content-between align-items-center">
+        <div style={{ flex: 1 }}></div>
+        <h1 className="text-center" style={{ flex: 2 }}>
+          Appointment List Test
+        </h1>
+        <div style={{ flex: 1 }} className="d-flex justify-content-end">
+          <button className="btn btn-primary" onClick={handleButtonClick}>
+            Book New Appointment
+          </button>
+        </div>
+      </div>
       <table className="table table-striped">
         <thead>
           <tr>
@@ -76,7 +95,11 @@ function AppointmentList() {
                 <td>{appointment.vip ? "Yes" : "No"}</td>
                 <td>{appointment.vin}</td>
                 <td>{appointment.reason}</td>
-                <td>{appointment.technician.first_name}</td>
+                <td>
+                  {appointment.technician.first_name +
+                    " " +
+                    appointment.technician.last_name}
+                </td>
                 <td>{appointment.status}</td>
                 <td>
                   <div>
