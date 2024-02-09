@@ -5,6 +5,13 @@ import React from 'react';
 import AddSalesperson from './SalesComponents/AddSalesperson';
 import ListSalespeople from './SalesComponents/ListSalespeople';
 import AddCustomer from './SalesComponents/AddCustomer';
+import ListCustomers from './SalesComponents/ListCustomers';
+import RecordNewSale from './SalesComponents/RecordNewSale';
+import ListAllSales from './SalesComponents/ListAllSales';
+import SalespersonHistory from './SalesComponents/SalespersonHistory';
+import ModelList from './InventoryComponents/ModelList';
+import CreateVehicleModelForm from './InventoryComponents/CreateVehicleModelForm';
+import ManufacturersList from './InventoryComponents/ManufacturersList';
 
 function App() {
   return (
@@ -16,6 +23,13 @@ function App() {
           <Route path="/add-salesperson" element={<AddSalesperson />} />
           <Route path="/salespeople" element={<ListSalespeople />} />
           <Route path="/add-customer" element={<AddCustomer />} />
+          <Route path="/customers" element={<ListCustomers />} />
+          <Route path="/record-sale" element={<RecordNewSale />} />
+          <Route path="/sales" element={<ListAllSales />} />
+          <Route path="/saleshistory" element={<SalespersonHistory />} />
+          <Route path="/modelslist" element={<ModelList />} />
+          <Route path="/createmodels" element={<CreateVehicleModelForm />} />
+          <Route path="/manufacturerslist" element={<ManufacturersList />} />
         </Routes>
       </div>
     </BrowserRouter>

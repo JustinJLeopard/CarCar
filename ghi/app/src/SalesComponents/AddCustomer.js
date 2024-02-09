@@ -29,9 +29,8 @@ const AddCustomer = () => {
       }
 
       const data = await response.json();
-      console.log(data); // For debugging
+      console.log(data);
       alert('Customer created successfully');
-      // Clear the form fields
       setFirstName('');
       setLastName('');
       setAddress('');

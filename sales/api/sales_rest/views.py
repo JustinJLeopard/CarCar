@@ -22,7 +22,7 @@ class CustomerEncoder(ModelEncoder):
 
 class SaleEncoder(ModelEncoder):
     model = Sale
-    properties = ["price", "automobile", "salesperson", "customer"]
+    properties = ["id", "price", "automobile", "salesperson", "customer"]
     encoders = {
         'automobile': AutomobileVOEncoder(),
         'salesperson': SalespersonEncoder(),
@@ -69,25 +69,35 @@ def api_customers_delete(request, pk):
     customer.delete()
     return HttpResponse(status=204)
 
-
 @require_http_methods(["GET", "POST"])
 def api_sales(request):
     if request.method == 'GET':
         sales = Sale.objects.all()
         return JsonResponse({'sales': sales}, encoder=SaleEncoder, safe=False)
     elif request.method == 'POST':
+        content = json.loads(request.body)
         try:
-            data = json.loads(request.body)
-            sale_data = {
-                'price': data['price'],
-                'automobile': get_object_or_404(AutomobileVO, pk=data['automobile']),
-                'salesperson': get_object_or_404(Salesperson, pk=data['salesperson']),
-                'customer': get_object_or_404(Customer, pk=data['customer']),
-            }
-            sale = Sale.objects.create(**sale_data)
+            automobile = AutomobileVO.objects.get(vin=content['automobile'])
+            salesperson = Salesperson.objects.get(employee_id=content['salesperson'])
+            customer = Customer.objects.get(phone_number=content['customer'])
+            price = content['price']
+
+            sale = Sale.objects.create(
+                automobile=automobile,
+                salesperson=salesperson,
+                customer=customer,
+                price=price
+            )
             return JsonResponse(sale, encoder=SaleEncoder, safe=False)
-        except (ValueError, ValidationError, KeyError) as e:
-            return HttpResponse(status=400)
+        except AutomobileVO.DoesNotExist:
+            return JsonResponse({"error": "Automobile not found"}, status=404)
+        except Salesperson.DoesNotExist:
+            return JsonResponse({"error": "Salesperson not found"}, status=404)
+        except Customer.DoesNotExist:
+            return JsonResponse({"error": "Customer not found"}, status=404)
+        except KeyError as e:
+            return JsonResponse({"error": f"Missing field: {str(e)}"}, status=400)
+
 
 @require_http_methods(["DELETE"])
 def api_sales_delete(request, pk):

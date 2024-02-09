@@ -25,11 +25,46 @@ function Nav() {
                 Add a Customer
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/customers">
+                Customers
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/record-sale">
+                Record a New Sale
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/sales">
+                List All Sales
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/saleshistory">
+                Salespeople Sales History
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/modelslist">
+                Model List
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/createmodels">
+                Create Vehicle Model
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/manufacturerslist">
+                List of Manufacturers
+              </NavLink>
+            </li>
           </ul>
         </div>
       </div>
     </nav>
-  )
+  );
 }
 
 export default Nav;

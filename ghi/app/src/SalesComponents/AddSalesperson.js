@@ -27,9 +27,8 @@ const AddSalesperson = () => {
       }
 
       const data = await response.json();
-      console.log(data); // For debugging
+      console.log(data);
       alert('Salesperson created successfully');
-      // Clear the form
       setFirstName('');
       setLastName('');
       setEmployeeId('');
