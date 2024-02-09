@@ -75,11 +75,12 @@ The Service microservice ensures that every aspect of the automobile servicing i
 - AutomobileVO Model: This model fetches automobile data from the Inventory API and includes information about VIN.
 - Salesperson Model: Represents salespeople and includes their name and employee number.
 - Customer Model: Represents customers and includes their name, address, and phone number.
--Sale Model: This models represents sales and includes the price of the sale, the date/time the sale took place, the automobile in question, the salesperson for the sale, and the customer making the purchase.
+  -Sale Model: This models represents sales and includes the price of the sale, the date/time the sale took place, the automobile in question, the salesperson for the sale, and the customer making the purchase.
 
 The Sales microservice ensures that every aspect of sales management is managed with precision and care. It allows salespeople to manage sales ranging from customer management, tracking of sales of automobile inventory within our fleet, and keep customer service at the forefront of our organization.
 
 ## Domain Driven Design Overlay
+
 CarCar is made up of 3 microservices which interact with one another.
 
 - **Inventory**
@@ -626,13 +627,21 @@ You will get an error because the system doesn't know what what to do with "Taco
 
 ### Service Appointments: We'll keep you on the road and out of our waiting room
 
-| Action                      | Method | URL                                                           |
-| --------------------------- | ------ | ------------------------------------------------------------- |
-| List service appointments   | GET    | http://localhost:8080/api/serviceappointment/                 |
-| Service appointment detail  | GET    | http://localhost:8080/api/serviceappointment/<int:id>         |
-| Service appointment history | GET    | http://localhost:8080/api/servicehistory/<int:vin (OPTIONAL)> |
-| Create service appointment  | POST   | http://localhost:8080/api/serviceappointment/                 |
-| Delete service appointment  | DELETE | http://localhost:8080/api/serviceappointment/<int:id>         |
+Below are the API endpoints designed to manage service appointments for automobiles. These endpoints allow you to list all service appointments, view details of specific appointments, view the service history optionally filtered by VIN, create new service appointments, and delete existing appointments.
+
+| Action                               | Method | URL                                                           |
+| ------------------------------------ | ------ | ------------------------------------------------------------- |
+| List service appointments            | GET    | http://localhost:8080/api/appointments/                       |
+| Create a service appointment         | POST   | http://localhost:8080/api/appointments/                       |
+| Delete a service appointment         | DELETE | http://localhost:8080/api/appointments/:id/                   |
+| Set appointment status to "canceled" | PUT    | http://localhost:8080/api/appointments/:id/cancel/            |
+| Set appointment status to "finished" | PUT    | http://localhost:8080/api/appointments/:id/finish/            |
+| List technicians                     | GET    | http://localhost:8080/api/technicians/                        |
+| Create a technician                  | POST   | http://localhost:8080/api/technicians/                        |
+| Delete a specific technician         | DELETE | http://localhost:8080/api/technicians/:id/                    |
+| Service appointment history          | GET    | http://localhost:8080/api/servicehistory/<int:vin (OPTIONAL)> |
+
+Note: Replace `:id` with the actual ID of the service appointment or technician you wish to interact with. For viewing the service appointment history, you can optionally append a VIN to filter the history by a specific vehicle.
 
 LIST SERVICE APPOINTMENT: This will return a list of all current service appointment.
 This is the format that will be displayed.
@@ -721,5 +730,5 @@ that it was added, just look at your service appointment list after creating a s
 ```
 
 DELETE SERVICE APPOINTMENT - Just input the "id" of the service appointment that you want to delete at the end of the url. For example, if we wanted to delete the above service history appointment for Barry
-because we accidently input his name as "Gary", we would just enter 'http://localhost:8080/api/serviceappointment/6' into the field and send the request. We will receive a confirmation message saying that
+because we accidently input his name as "Gary", we would just enter 'http://localhost:8080/api/appointment/6' into the field and send the request. We will receive a confirmation message saying that
 the service appointment was deleted.
