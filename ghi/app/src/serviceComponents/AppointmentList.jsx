@@ -14,7 +14,7 @@ function AppointmentList() {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        setAppointments(data.appointments || []); // Assuming the API returns an object with an "appointments" array
+        setAppointments(data.appointments || []);
       } catch (error) {
         console.error("Fetch error:", error.message);
         setError(error.message);
@@ -24,7 +24,6 @@ function AppointmentList() {
     getData();
   }, []);
 
-  // Handle the cancellation of the appointment
   const handleDeleteAppointment = async (id) => {
     try {
       const response = await fetch(
@@ -46,15 +45,10 @@ function AppointmentList() {
     }
   };
 
-  //Test with partners implementation as well
-  // Using React Router DOM --> {useNavigate} {documentationLink:https://reactrouter.com/en/main/hooks/use-navigate}
-  // Handle the button click for creating a new appointment for customer
-
   function handleButtonClick() {
     apptFormNavigate("/appointments/create/");
   }
 
-  // Using JavaScript built in fuction to formate the Date Output to the client UI for the appointment List
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
