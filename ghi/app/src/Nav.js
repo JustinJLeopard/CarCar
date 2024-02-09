@@ -27,6 +27,14 @@ function Nav() {
           className="nav-link"
           style={{ color: "white" }}
           aria-current="page"
+          to="/manufacturer/create/"
+        >
+          Create Manufacturer
+        </NavLink>
+        <NavLink
+          className="nav-link"
+          style={{ color: "white" }}
+          aria-current="page"
           to="appointments/create/"
         >
           Create a Service Appointment
@@ -78,52 +86,92 @@ function Nav() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <NavLink className="nav-link" to="/add-salesperson">
+              <NavLink
+                className="nav-link"
+                to="/add-salesperson"
+                style={{ color: "white" }}
+              >
                 Add a Salesperson
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/salespeople">
+              <NavLink
+                className="nav-link"
+                to="/salespeople"
+                style={{ color: "white" }}
+              >
                 Salespeople
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/add-customer">
+              <NavLink
+                className="nav-link"
+                to="/add-customer"
+                style={{ color: "white" }}
+              >
                 Add a Customer
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/customers">
+              <NavLink
+                className="nav-link"
+                to="/customers"
+                style={{ color: "white" }}
+              >
                 Customers
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/record-sale">
+              <NavLink
+                className="nav-link"
+                to="/record-sale"
+                style={{ color: "white" }}
+              >
                 Record a New Sale
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/sales">
+              <NavLink
+                className="nav-link"
+                to="/sales"
+                style={{ color: "white" }}
+              >
                 List All Sales
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/saleshistory">
+              <NavLink
+                className="nav-link"
+                to="/saleshistory"
+                style={{ color: "white" }}
+              >
                 Salespeople Sales History
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/modelslist">
+              <NavLink
+                className="nav-link"
+                to="/modelslist"
+                style={{ color: "white" }}
+              >
                 Model List
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/createmodels">
+              <NavLink
+                className="nav-link"
+                to="/createmodels"
+                style={{ color: "white" }}
+              >
                 Create Vehicle Model
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/manufacturerslist">
+              <NavLink
+                className="nav-link"
+                to="/manufacturerslist"
+                style={{ color: "white" }}
+              >
                 List of Manufacturers
               </NavLink>
             </li>
