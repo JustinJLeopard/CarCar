@@ -9,11 +9,37 @@ Person 2 - Justin Leopard - Sales
 
 CarCar is an application designed for the management of automobile dealerships. At its core are three pivotal microservices: Inventory, Service Center, and Sales Center. The integrated microservices deliver a comprehensive and efficient platform that empowers automotive businesses to thrive in the digital age.
 
+## Built With
+
+The project leverages powerful technologies and libraries:
+
 - Front-end: We leverage the power of React, a leading JavaScript library, to create a modern and user-friendly interface that enhances user engagement and satisfaction.
+  ![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=white)
 
 - Back-end: CarCar is built on Django, a high-performance Python web framework, ensuring a secure, scalable, and efficient server-side architecture.
+  ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat-square&logo=python&logoColor=white)
+  ![Django](https://img.shields.io/badge/-Django-092E20?style=flat-square&logo=django&logoColor=white)
 
 - Database: We rely on PostgreSQL, a trusted and robust relational database management system, to store and manage vast amounts of data, ensuring data integrity and reliability.
+  ![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-336791?style=flat-square&logo=postgresql&logoColor=white)
+
+### How To Run Application :whale:
+
+![Docker](https://img.shields.io/badge/-Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+
+Follow these steps to get the application up and running on your local machine:
+
+- **Open your terminal.**
+- **Go to the directory you would like to clone the project into**
+- **Clone the repo:Talk with team partner on this**
+- **Make sure to change directory**
+- **Ensure that your Docker Desktop Application is open**
+- **Run the following commands in Sequence**
+  '''
+  **docker volume create beta-data**
+  **docker-compose build**
+  **docker-compose up**
+  '''
 
 ## Service microservice
 
@@ -37,5 +63,5 @@ The Service microservice ensures that every aspect of the automobile servicing i
 Explain your models and integration with the inventory
 microservice, here.
 
-#Diagram
+#Domain Driven Design Overlay
 ![Excalidraw Diagram](https://i.imgur.com/ed41vTt.jpg)
