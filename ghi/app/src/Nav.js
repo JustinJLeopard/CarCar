@@ -11,9 +11,33 @@ function Nav() {
           className="nav-link"
           style={{ color: "white" }}
           aria-current="page"
+          to="/automobiles/create/"
+        >
+          Create Automobile
+        </NavLink>
+        <NavLink
+          className="nav-link"
+          style={{ color: "white" }}
+          aria-current="page"
+          to="/automobiles/list/"
+        >
+          Automobile List
+        </NavLink>
+        <NavLink
+          className="nav-link"
+          style={{ color: "white" }}
+          aria-current="page"
           to="appointments/create/"
         >
           Create a Service Appointment
+        </NavLink>
+        <NavLink
+          className="nav-link"
+          style={{ color: "white" }}
+          aria-current="page"
+          to="servicehistory/"
+        >
+          Service History
         </NavLink>
         <NavLink
           className="nav-link"
