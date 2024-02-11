@@ -1,6 +1,6 @@
-# <div align="center">
+<div align="center">
 
-  <h1 style="margin-bottom: 20px;">🚗 CarCar: <span style="margin-left: 10px;">Driving Automotive Innovation</span></h1>
+  <h2 style="margin-bottom: 10px;">🚗 CarCar: <span style="margin-left: 10px;">Driving Automotive Innovation</span></h1>
 </div>
 
 ## Team:
