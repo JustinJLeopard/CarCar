@@ -1,4 +1,7 @@
-# 🚘 CarCar: Driving Automotive Innovation
+# <div align="center">
+
+  <h1 style="margin-bottom: 20px;">🚗 CarCar: <span style="margin-left: 10px;">Driving Automotive Innovation</span></h1>
+</div>
 
 ## Team:
 
