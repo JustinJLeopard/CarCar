@@ -34,7 +34,7 @@ Follow these steps to get the application up and running on your local machine:
 
 - **Open your terminal.**
 - **Go to the directory you would like to clone the project into**
-- **Clone the repo: [text](https://gitlab.com/justinleopard/project-beta.git)**
+- **Clone the repo: [Git Clone Here](https://gitlab.com/justinleopard/project-beta.git)**
 - **Make sure to change directory**
 - **Ensure that your Docker Desktop Application is open**
 - **Run the following commands in Sequence**
