@@ -1,6 +1,6 @@
-# CarCar
+# 🚘 CarCar: Driving Automotive Innovation
 
-Team:
+## Team:
 
 - \*\*Person 1 - Murray Milton - Service
 - \*\*Person 2 - Justin Leopard - Sales
