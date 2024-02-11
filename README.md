@@ -1,6 +1,6 @@
-# CarCar
+# 🚘 CarCar: Driving Automotive Innovation
 
-Team:
+## Team:
 
 - \*\*Person 1 - Murray Milton - Service
 - \*\*Person 2 - Justin Leopard - Sales
@@ -75,11 +75,12 @@ The Service microservice ensures that every aspect of the automobile servicing i
 - AutomobileVO Model: This model fetches automobile data from the Inventory API and includes information about VIN.
 - Salesperson Model: Represents salespeople and includes their name and employee number.
 - Customer Model: Represents customers and includes their name, address, and phone number.
--Sale Model: This models represents sales and includes the price of the sale, the date/time the sale took place, the automobile in question, the salesperson for the sale, and the customer making the purchase.
+  -Sale Model: This models represents sales and includes the price of the sale, the date/time the sale took place, the automobile in question, the salesperson for the sale, and the customer making the purchase.
 
 The Sales microservice ensures that every aspect of sales management is managed with precision and care. It allows salespeople to manage sales ranging from customer management, tracking of sales of automobile inventory within our fleet, and keep customer service at the forefront of our organization.
 
 ## Domain Driven Design Overlay
+
 CarCar is made up of 3 microservices which interact with one another.
 
 - **Inventory**
